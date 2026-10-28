@@ -8,9 +8,11 @@ namespace WEB_API.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
+    //fix: The file is renamed to UsersController.cs, so it matches the class
     public class UsersController : ControllerBase
     {
-        static string FilePath = "User.txt";
+        //fix: The path never changes, so it can be readonly
+        static readonly string FilePath = "User.txt";
 
         // GET: api/<User>
         [HttpGet]
@@ -50,6 +52,7 @@ namespace WEB_API.Controllers
         }
 
       
+        //The assignment asks a wrong login to return NoContent() (204)
         [HttpPost("Login")]
         public ActionResult<WEB_API.UserLogin> Post([FromBody] WEB_API.UserLogin loginUser)
         {
@@ -71,6 +74,7 @@ namespace WEB_API.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put(int id, [FromBody] User userToUpdate)
         {
             string textToReplace = string.Empty;
@@ -83,11 +87,17 @@ namespace WEB_API.Controllers
                     User user =
                     JsonSerializer.Deserialize<User>(currentUserInFile);
                     if (user.Id == id)
+                    {
                         textToReplace = currentUserInFile;
+                        //fix: Found- break
+                        break;
+                    }
                 }
             }
             if(textToReplace != string.Empty)
 {
+                //fix: Keep the id, otherwise the updated user is saved without it
+                userToUpdate.Id = id;
                 string text = System.IO.File.ReadAllText(FilePath);
                 text = text.Replace(textToReplace,
                 JsonSerializer.Serialize(userToUpdate));
