@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="home.js" defer ></script>
+    <style>
+        body{
+            display: flex;
+            height:100vh;
+            gap: 100px;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Register</p>
+        <input id="firstName" placeholder="First Name" required />
+        <br />
+        <input id="lastName" placeholder="Last Name" required />
+        <br />
+        <input id="userEmail" placeholder="Email" type="email" required />
+        <br />
+        <input id="password" type="password" placeholder="Password" required />
+        <br />
+        <button id="clickReg" onclick="Register()">sign in</button>
+        <button id="strong" onclick="Strong()">בדיקת חוזק סיסמה</button>
+        <progress id="progress" value="0" max="4"></progress>
+    </div>
+
+    <div>
+        <p>Login</p>
+        <input id="userLogEmail" placeholder="email" />
+        <br />
+        <input id="logPassword" type="password" placeholder="Password" />
+        <br />
+        <button onclick="LogIn()">LogIn</button>
+        <a id="toUpdate" style="display: none" href="update.html" >To Update</a>
+    </div>
+
+</html>
