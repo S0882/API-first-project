@@ -7,8 +7,11 @@
     <RootNamespace>WEB_API</RootNamespace>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <PackageReference Include="zxcvbn-core" Version="7.0.92" />
   </ItemGroup>
 
+=======
+>>>>>>> ba83b32b1f1f1b348d1fb0ce8488e2f4e457b636
 </Project>
