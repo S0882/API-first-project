@@ -27,7 +27,6 @@ const Register = async () => {
     }
 }
 
-<<<<<<< HEAD
 const Strong = async () => {
 
     password = document.querySelector("#password").value;
@@ -56,8 +55,6 @@ const Strong = async () => {
 
 }
 
-=======
->>>>>>> ba83b32b1f1f1b348d1fb0ce8488e2f4e457b636
 const LogIn = async() => {
     const userData = {
         userLogEmail: document.querySelector("#userLogEmail").value,
