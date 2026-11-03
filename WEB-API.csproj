@@ -6,9 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>WEB_API</RootNamespace>
   </PropertyGroup>
+<<<<<<< HEAD
 
   <ItemGroup>
     <PackageReference Include="zxcvbn-core" Version="7.0.92" />
   </ItemGroup>
 
 </Project>
+=======
+  <ItemGroup>
+    <PackageReference Include="zxcvbn-core" Version="7.0.92" />
+  </ItemGroup>
+</Project>
+>>>>>>> b0bd5c188e95a7840a5cb439ba68436afdb35942
