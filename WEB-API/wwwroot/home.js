@@ -1,5 +1,4 @@
-﻿
-const Register = async () => {
+﻿const Register = async () => {
 
     const userData = {
         firstName: document.querySelector("#firstName").value,
@@ -27,7 +26,6 @@ const Register = async () => {
     }
 }
 
-
 const Strong = async () => {
 
     password = document.querySelector("#password").value;
@@ -53,7 +51,6 @@ const Strong = async () => {
     }
 
 }
-
 
 const LogIn = async() => {
     const userData = {
