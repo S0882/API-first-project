@@ -27,6 +27,7 @@ const Register = async () => {
     }
 }
 
+
 const Strong = async () => {
 
     password = document.querySelector("#password").value;
@@ -51,9 +52,8 @@ const Strong = async () => {
         alert(e.message)
     }
 
-
-
 }
+
 
 const LogIn = async() => {
     const userData = {

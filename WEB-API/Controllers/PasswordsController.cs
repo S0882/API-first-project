@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services;
 using Zxcvbn;
 
 
@@ -10,6 +11,8 @@ namespace WEB_API.Controllers
     [ApiController]
     public class PasswordsController : ControllerBase
     {
+        PasswordService _passwordService = new PasswordService();
+
         // GET: api/<PasswordsController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -28,8 +31,7 @@ namespace WEB_API.Controllers
         [HttpPost("Password")]
         public IActionResult Post([FromBody] string password)
         {
-            var results = Zxcvbn.Core.EvaluatePassword(password);
-            return Ok(results.Score);
+            return Ok(_passwordService.Post(password));
         }
 
         // PUT api/<PasswordsController>/5

@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WEB_API
+namespace Entities
 {
     public class UserLogin
     {
-        [Required]
-        [EmailAddress]
+        [EmailAddress, Required]
         public string UserLogEmail { get; set; }
         [Required]
         public string LogPassword { get; set; }
