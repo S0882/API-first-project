@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
+//fix: removed the duplicate using lines
 using System.Text;
 using Zxcvbn;
 

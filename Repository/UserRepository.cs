@@ -5,6 +5,7 @@ namespace Repository
 {
     public class UserRepository
     {
+        //A full path on your disk (D:\...) only works on your computer: use a path relative to the project, so it runs on another computer too
         static string FilePath = "D:\\שנה ב\\WEB-API\\WebAPI\\Repository\\User.txt";
 
         public IEnumerable<string> Get()
@@ -12,6 +13,7 @@ namespace Repository
             return new string[] { "Shifrah", "Tamar" };
         }
 
+        //The GET by id and login requests return 500. Does the data file start with extra characters (a byte order mark)? Check how User.txt was saved (UTF-8 without BOM) and what the exception says.
         public User Get(int id)
         {
             using (StreamReader reader = System.IO.File.OpenText(FilePath))

@@ -28,6 +28,7 @@
 
 const Strong = async () => {
 
+    //Where is the variable password declared? This line assigns a name that this file does not declare.
     password = document.querySelector("#password").value;
     try {
         const responsePost = await fetch('api/Passwords/Password',
