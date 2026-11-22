@@ -5,6 +5,7 @@ namespace Repository
 {
     public class UserRepository
     {
+        //The code uses a full path on your disk, so it can't run on another computer: use a path relative to the project
         static string FilePath = "D:\\שנה ב\\WEB-API\\WebAPI\\Repository\\User.txt";
 
         public IEnumerable<string> Get()

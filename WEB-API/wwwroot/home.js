@@ -1,4 +1,5 @@
-﻿const Register = async () => {
+﻿//In JavaScript, function names are written in camelCase: register
+const Register = async () => {
 
     const userData = {
         firstName: document.querySelector("#firstName").value,
@@ -28,6 +29,7 @@
 
 const Strong = async () => {
 
+    //Where is password declared? It isn't declared in this function
     password = document.querySelector("#password").value;
     try {
         const responsePost = await fetch('api/Passwords/Password',
