@@ -6,6 +6,7 @@ document.querySelector("#lastName").value = user2.lastName;
 document.querySelector("#userEmail").value = user2.userEmail;
 document.querySelector("#password").value = user2.password;
 
+//In JavaScript, function names are written in camelCase: update
 const Update = async () => {
 
     const userId = user2.id;

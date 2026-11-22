@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+//This using isn't used in this file: you can remove it
 using System.Text.Json;
 using Entities;
 using Services;
@@ -13,6 +14,7 @@ namespace WEB_API.Controllers
     public class UsersController : ControllerBase
     {
 
+        //The assignment asks the users controller to take the password service's interface and call it: where would you get the password service here?
         UserService _userService = new UserService();
 
         // GET: api/<User>
@@ -36,6 +38,7 @@ namespace WEB_API.Controllers
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
         {
+            //Where should the password strength check go? The assignment asks POST to return 400 when the score is below 3, before the user is saved
             user = _userService.Post(user);
             return CreatedAtAction(nameof(Get), new { id = user.Id },user);
         }
@@ -54,7 +57,9 @@ namespace WEB_API.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] User userToUpdate)
         {
+            //Where should the password strength check go? The assignment asks PUT to return 400 when the score is below 3, before the user is updated
             _userService.Put(id, userToUpdate);  
+            //Why does PUT return 500 instead of updating the user? Follow the call into the repository's Put: what happens when it reads the data file?
             return Ok();
         }
 
