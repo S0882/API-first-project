@@ -13,7 +13,12 @@ namespace WEB_API.Controllers
     public class UsersController : ControllerBase
     {
 
-        UserService _userService = new UserService();
+        IUserService _userService;
+
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
         // GET: api/<User>
         [HttpGet]
@@ -24,44 +29,48 @@ namespace WEB_API.Controllers
 
         // GET api/<User>/5
         [HttpGet("{id}")]
-        public ActionResult<User> Get(int id)
+        public async Task<ActionResult<User>> Get(int id)
         {
-            if(_userService.Get(id) != null)
-                return Ok(_userService.Get(id));
+            User? user = await _userService.GetAsync(id);
+            if(user != null)
+                return Ok(user);
             
-            return NoContent();
+            return NotFound();
         }
 
         // POST api/<User>
         [HttpPost]
-        public ActionResult<User> Post([FromBody] User user)
+        public async Task<ActionResult<User>> Post([FromBody] User user)
         {
-            user = _userService.Post(user);
+            user = await _userService.PostAsync(user);
             return CreatedAtAction(nameof(Get), new { id = user.Id },user);
         }
 
       
         [HttpPost("Login")]
-        public ActionResult<UserLogin> Post([FromBody] UserLogin loginUser)
+        public async Task<ActionResult<User>> Login([FromBody] UserLogin loginUser)
         {
-            if(_userService.Login(loginUser) != null)
-                return Ok(_userService.Login(loginUser));
+            User? user = await _userService.LoginAsync(loginUser);
+            if(user!= null)
+                return Ok(user);
 
             return NoContent();
         }
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] User userToUpdate)
+        public async Task<ActionResult> Put(int id, [FromBody] User userToUpdate)
         {
-            _userService.Put(id, userToUpdate);  
+            await _userService.PutAsync(id, userToUpdate);  
             return Ok();
         }
 
         // DELETE api/<User>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            await _userService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }
