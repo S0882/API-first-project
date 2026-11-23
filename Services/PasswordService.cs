@@ -7,12 +7,11 @@ using Zxcvbn;
 
 namespace Services
 {
-    public class PasswordService
+    public class PasswordService : IPasswordService
     {
-        public int Post( string password)
+        public int Post(string password)
         {
-             return Zxcvbn.Core.EvaluatePassword(password).Score;
-           
+            return Zxcvbn.Core.EvaluatePassword(password).Score;
         }
     }
 }

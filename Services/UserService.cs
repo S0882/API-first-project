@@ -5,38 +5,43 @@ using System.Text.Json;
 
 namespace Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        UserRepository _userRepository = new UserRepository();
+        IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
 
         public IEnumerable<string> Get()
         {
             return _userRepository.Get();
         }
 
-        public User Get(int id)
+        public async Task<User?> GetAsync(int id)
         {
-            return _userRepository.Get(id);
+            return await _userRepository.GetAsync(id);
         }
 
-        public User Post(User user)
+        public async Task<User> PostAsync(User user)
         {
-            return _userRepository.Post(user);
+            return await _userRepository.PostAsync(user);
         }
 
-        public User Login(UserLogin loginUser)
+        public async Task<User> LoginAsync(UserLogin loginUser)
         {
-            return _userRepository.Login(loginUser);
+            return await _userRepository.LoginAsync(loginUser);
         }
 
-        public void Put(int id, User userToUpdate)
+        public async Task PutAsync(int id, User userToUpdate)
         {
-            _userRepository.Put(id, userToUpdate);
+            await _userRepository.PutAsync(id, userToUpdate);
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            _userRepository.Delete(id);
+            await _userRepository.DeleteAsync(id);
         }
     }
 }
